@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	  <PackageId>Microservice.Framework.Sql</PackageId>
+	  <Version>7.0.0</Version>
+	  <Authors>Lwandile Mfundisi</Authors>
+	  <Description>Microservice.Framework.Sql is framework for connecting to a relational database</Description>
+	  <IsPackable>true</IsPackable>
+	  <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <PackageProjectUrl></PackageProjectUrl>
+	  <Title>Microservice.Framework.Sql</Title>
+	  <RepositoryUrl>https://github.com/lwandilemfundisi/Microservice.Framework.Sql</RepositoryUrl>
+	  <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+	
+<ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="Microservice.Framework.Common" Version="7.0.0" />
+  </ItemGroup>
+	
+	<Target DependsOnTargets="ResolveReferences" Name="CopyProjectReferencesToPackage">
+		<ItemGroup>
+			<BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
+		</ItemGroup>
+	</Target>
+
+</Project>
